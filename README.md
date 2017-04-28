@@ -1,8 +1,6 @@
-# IIMSApp - CodeIgniter v2.2.2
+# CAM IMS - CodeIgniter v2.2.2
 
-IIMS is a simple online inventory and invoice management system that also help you manage your customers, employees, products.
-
-Built with these awesome tools:
+Built with these tools:
 
 * [CodeIgniter v2.2.2](http://www.codeigniter.com/)
 * [Twitter Bootstrap v2.3.2](http://getbootstrap.com/2.3.2/)
