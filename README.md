@@ -35,6 +35,9 @@ License
 =======
 This application is released under the [**MIT License**](http://www.opensource.org/licenses/MIT).
 
+First created by Shibbir Ahmed in 2015
+Edited by Evan Budianto in 2017
+
 Final Note
 ==========
 The functionality of this project was written in 2013. It is no longer actively maintained. However I'm planning for a CodeIgniter v3 release.
