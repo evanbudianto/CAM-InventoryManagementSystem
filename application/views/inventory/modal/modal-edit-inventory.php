@@ -62,6 +62,13 @@
 				        	</div>
 				    	</div>
 
+				    	<!-- <div class="control-group">
+				        	<label class="control-label" for="PriceCategory">PriceCategory</label>
+				        	<div class="controls">
+				            	<input type="number" name="PriceCategory" class="currency input-medium" value="{{UnitPrice}}" min="0" step="1" />
+				        	</div>
+				    	</div> -->
+
 				    	<div class="control-group">
 				        	<label class="control-label" for="Warranty">Warranty</label>
 				        	<div class="controls">

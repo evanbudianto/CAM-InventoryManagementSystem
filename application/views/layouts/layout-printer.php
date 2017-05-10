@@ -59,7 +59,7 @@ else {
 						<dd>Invoice Date: <?=$CreatedDate?></dd>
 						<dd>Invoice Number: <?=$InvoiceNumber?></dd>
 						<dd>Prepared By: <?=$CreatorName?></dd>
-						<dd>Print Date: <?php date_default_timezone_set('Asia/Dhaka');echo date("d F, Y | g:i a");?></dd>
+						<dd>Print Date: <?php date_default_timezone_set('Asia/Jakarta');echo date("d F, Y | g:i a");?></dd>
 					</dl>
 				</div>
 			</div>

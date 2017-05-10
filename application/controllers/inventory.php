@@ -9,13 +9,15 @@ class Inventory extends CI_Controller
 
     public function __construct()
     {
+        // echo "Hello World";
         parent:: __construct();
         $this->Model_Helper->checkSession();
-        $this->template->write('title', 'IIMS -- Manage Inventory');
+        $this->template->write('title', 'CAM -- Inventory Management System');
     }
 
 	public function index()
     {
+        // echo "Hello World";
         $this->template->write_view('content', 'inventory/index');
         $this->template->render();
     }
@@ -48,13 +50,20 @@ class Inventory extends CI_Controller
 
     public function getInventory()
     {
+        // echo "Hello World";
         $categoryId = $this->input->get('CategoryID');
     	$data['inventory'] = $this->Model_Inventory->getInventory($categoryId);
     	echo json_encode($data['inventory']);
+        // echo json_encode("Hello World !");
+    }
+
+    public function someMethod() {
+        echo json_encode("Wuhuw");
     }
 
     public function getInventoryById()
     {
+        // echo "Hello World";
         $id = $this->input->get('ID');
         $data['categories'] = $this->Model_Category->getCategories();
         $data['inventory'] = $this->Model_Inventory->getInventoryById($id);

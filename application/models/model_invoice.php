@@ -9,7 +9,7 @@ class Model_Invoice extends CI_Model
     public function __construct()
     {
         parent::__construct();
-        date_default_timezone_set('Asia/Dhaka');
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     public function addInvoice()
@@ -74,7 +74,7 @@ class Model_Invoice extends CI_Model
 
         for($index = 0; $index < count($productList); $index++)
         {
-        	$product = $this->Model_DB->getSingleRow('tbl_inventory', array('Title', 'Description', 'UnitPrice', 'Warranty', 'Quantity'), array('ID' => $productList[$index]));
+        	$product = $this->Model_DB->getSingleRow('tbl_inventory', array('Title', 'Description', 'UnitPrice', 'PriceCategory', 'Warranty', 'Quantity'), array('ID' => $productList[$index]));
 
 	        $insert = array (
 	        	'InvoiceID' 	=>  $InvoiceId,
@@ -82,6 +82,7 @@ class Model_Invoice extends CI_Model
 	        	'Description' 	=> 	$product->Description,
 	        	'Warranty' 		=> 	$product->Warranty,
 	        	'UnitPrice' 	=> 	$product->UnitPrice,
+                'PriceCategory' =>  $product->PriceCategory,
 	        	'Quantity'  	=>	$qtyList[$index],
                 'SerialNumber'  =>  $serialList[$index]
 	        );
@@ -146,7 +147,7 @@ class Model_Invoice extends CI_Model
 
     public function getInvoiceDetailsByInvoiceID($invoiceId)
     {
-    	$columns = array('Title', 'Description', 'UnitPrice', 'Warranty', 'Quantity', 'SerialNumber');
+    	$columns = array('Title', 'Description', 'UnitPrice', 'PriceCategory', 'Warranty', 'Quantity', 'SerialNumber');
     	return $this->Model_DB->read($this->_tableInvoiceDetails, $columns, array('InvoiceID' => $invoiceId));
     }
 

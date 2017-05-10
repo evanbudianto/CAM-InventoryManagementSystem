@@ -20,6 +20,7 @@
 	          		<th>Title</th>
 	          		<th>Description</th>
 	          		<th>UnitPrice</th>
+	          		<th>PriceCategory</th>
 	          		<th>Warranty</th>
 	          		<th>Quantity</th>
 	          		<th>Available</th>
@@ -46,6 +47,7 @@
 		<td>{{Title}}</td>
   		<td>{{{Description}}}</td>
   		<td>{{UnitPrice}}</td>
+  		<td>{{PriceCategory}}</td>
   		<td>{{Warranty}}</td>
   		<td>{{Quantity}}</td>
   		<td>{{Status}}</td>
@@ -68,13 +70,14 @@
 			CategoryID: categoryId
 		};
 		$.fetchRemoteData('inventory', 'getInventory', form_data).then(function (data) {
+			console.log(data);
 			$.hideSpinner();
+			console.log(data);
 			var template = Handlebars.compile($('#template-inventory').html());
 			var dataSource = new kendo.data.DataSource({
 			      data: data,
 			      pageSize: 15
 			});
-
 			var grid = $('#inventoryGrid').data('kendoGrid');
 
 			if(grid === undefined) {
@@ -100,7 +103,7 @@
 	}
 	$(function () {
 		renderInventoryList(1);
-
+		// document.write(1+1);
 		$('a[data-toggle="tab"]:first').on('shown', function () {
 			$('.category-dropDown').addClass('category-handler-for-inventory');
 		});

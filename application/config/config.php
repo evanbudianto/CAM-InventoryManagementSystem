@@ -197,7 +197,7 @@ $config['log_threshold'] = 4;
 | application/logs/ folder. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = 'C:\xampp\htdocs\iims-ci-master\file.txt';
+$config['log_path'] = 'C:\xampp\htdocs\CAM-InventoryManagementSystem\file.txt';
 
 /*
 |--------------------------------------------------------------------------

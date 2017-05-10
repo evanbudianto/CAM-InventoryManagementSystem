@@ -1,6 +1,6 @@
 var IIMSApp = IIMSApp || {};
 
-IIMSApp.base_url = window.location.protocol + '//' + window.location.host + '/iims-ci-master/';
+IIMSApp.base_url = window.location.protocol + '//' + window.location.host + '/CAM-InventoryManagementSystem/';
 IIMSApp.newlyCreatedProductId = 0;
 IIMSApp.newlyCreatedCustomerId = 0;
 IIMSApp.newlyEditedCustomerId = 0;

@@ -39,7 +39,7 @@ else {
 				<dd>Request Date: <?=$CreatedDate?></dd>
 				<dd>Request Number: <?=$InvoiceNumber?></dd>
 				<dd>Prepared By: <a href="<?=site_url('user/profile').'/'.$UserName?>"><?=$CreatorName?></a></dd>
-				<dd>Print Date: <?php date_default_timezone_set('Asia/Dhaka');echo date("d F, Y | g:i a");?></dd>
+				<dd>Print Date: <?php date_default_timezone_set('Asia/Jakarta');echo date("d F, Y | g:i a");?></dd>
 			</dl>
 		</div>
 		<div class="offset6 span1">

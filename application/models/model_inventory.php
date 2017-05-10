@@ -9,7 +9,7 @@ class Model_Inventory extends CI_Model
     public function __construct()
     {
         parent::__construct();
-        date_default_timezone_set('Asia/Dhaka');
+        date_default_timezone_set('Asia/Jakarta');
     }
 
     public function addInventory()
@@ -47,6 +47,32 @@ class Model_Inventory extends CI_Model
     	}
 
         $Quantity = $this->input->post('Quantity');
+        $UnitPrice = $this->input->post('UnitPrice');
+
+        echo "Hello World";
+
+        $PriceCategory = 0;
+        if (($UnitPrice >= 1) && ($UnitPrice <= 499999))
+        {
+            $PriceCategory = 1;
+        }
+        elseif (($UnitPrice >= 500000) && ($UnitPrice <= 2599999))
+        {
+            $PriceCategory = 2;
+        }
+        elseif (($UnitPrice >= 2600000) && ($UnitPrice <= 5999999))
+        {
+            $PriceCategory = 3;
+        }
+        elseif (($UnitPrice >= 6000000) && ($UnitPrice <= 12599999))
+        {
+            $PriceCategory = 4;
+        }
+        elseif ($UnitPrice >= 12600000)
+        {
+            $PriceCategory = 5;
+        }
+
 
     	$insert = array (
     		'Title'      		=> $this->input->post('Title'),
@@ -55,6 +81,7 @@ class Model_Inventory extends CI_Model
     		'Quantity'      	=> $this->input->post('Quantity'),
     		'Warranty'    		=> $warranty,
     		'UnitPrice'     	=> $this->input->post('UnitPrice'),
+            'PriceCategory'     => $PriceCategory,
     		'Status'   			=> ($Quantity > 0) ? 'Yes' : 'No',
     		'CreatedBy'     	=> $this->session->userdata('userId'),
     		'ModifiedBy'    	=> $this->session->userdata('userId'),
@@ -67,6 +94,30 @@ class Model_Inventory extends CI_Model
 
     public function editInventory($id)
     {
+        $UnitPrice = $this->input->post('UnitPrice');
+
+        $PriceCategory = 0;
+        if (($UnitPrice >= 1) && ($UnitPrice <= 499999))
+        {
+            $PriceCategory = 1;
+        }
+        elseif (($UnitPrice >= 500000) && ($UnitPrice <= 2599999))
+        {
+            $PriceCategory = 2;
+        }
+        elseif (($UnitPrice >= 2600000) && ($UnitPrice <= 5999999))
+        {
+            $PriceCategory = 3;
+        }
+        elseif (($UnitPrice >= 6000000) && ($UnitPrice <= 12599999))
+        {
+            $PriceCategory = 4;
+        }
+        elseif ($UnitPrice >= 12600000)
+        {
+            $PriceCategory = 5;
+        }
+
     	$data = array (
     		'Title'      		=> $this->input->post('Title'),
     		'CategoryID'   		=> $this->input->post('CategoryID'),
@@ -74,6 +125,7 @@ class Model_Inventory extends CI_Model
     		'Quantity'      	=> $this->input->post('Quantity'),
     		'Warranty'    		=> $this->input->post('Warranty'),
     		'UnitPrice'     	=> $this->input->post('UnitPrice'),
+            'PriceCategory'     => $PriceCategory,
     		'Status'   			=> $this->input->post('Status'),
     		'ModifiedBy'    	=> $this->session->userdata('userId'),
             'ModifiedDate'      => date("d F, Y | g:i a")
@@ -81,47 +133,52 @@ class Model_Inventory extends CI_Model
     	return $this->Model_DB->update($this->_tableInventory, $data, array('ID' => $id));
     }
 
-	public function getInventory($categoryId)
+    public function someMethod($cid) {
+        return "Wuhuw";
+    }
+
+    public function getInventory($categoryId)
     {
-    	$columns = array(
-    			$this->_tableInventory.'.ID',
-    			'CategoryID',
-    			'Title',
-    			'Description',
-    			'Quantity',
-    			'UnitPrice',
-    			'Warranty',
-    			'Status',
+        $columns = array(
+                $this->_tableInventory.'.ID',
+                'CategoryID',
+                'Title',
+                'Description',
+                'Quantity',
+                'UnitPrice',
+                'PriceCategory',
+                'Warranty',
+                'Status',
                 $this->_tableInventory.'.CreatedBy',
                 $this->_tableInventory.'.CreatedDate',
-    			$this->_tableUser.'.Name AS CreatorName',
+                $this->_tableUser.'.Name AS CreatorName',
                 $this->_tableUser.'.UserName AS CreatorUserName'
-    	);
+        );
 
-    	$where = array('CategoryID' => $categoryId);
+        $where = array('CategoryID' => $categoryId);
 
-    	$this->db->select($columns);
-    	$this->db->join($this->_tableUser, 'tbl_user.ID = tbl_inventory.CreatedBy');
-    	$this->db->where($where);
-    	$this->db->order_by($this->_tableInventory.'.ID', 'desc');
+        $this->db->select($columns);
+        $this->db->join($this->_tableUser, 'tbl_user.ID = tbl_inventory.CreatedBy');
+        $this->db->where($where);
+        $this->db->order_by($this->_tableInventory.'.ID', 'desc');
 
-    	$query = $this->db->get($this->_tableInventory);
+        $query = $this->db->get($this->_tableInventory);
 
-    	if($query->num_rows() > 0)
-    	{
-    		return $query->result();
-    	}
+        if($query->num_rows() > 0)
+        {
+            return $query->result();
+        }
         return FALSE;
     }
 
     public function getInventoryById($id)
     {
-        $columns = array(
+        $columns1 = array(
             'ID', 'CategoryID', 'Title', 'Description',
-            'Quantity', 'UnitPrice', 'Warranty', 'Status'
+            'Quantity', 'UnitPrice', 'PriceCategory', 'Warranty', 'Status'
         );
 
-        return $this->Model_DB->read($this->_tableInventory, $columns, array('ID' => $id));
+        return $this->Model_DB->read($this->_tableInventory, $columns1, array('ID' => $id));
     }
 
     public function getInventoryChart()

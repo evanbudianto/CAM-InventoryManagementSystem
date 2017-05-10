@@ -11,7 +11,7 @@ $(function () {
 
 	$(document).on('click', '.btn-login', function () {
 		$(document).trigger('event/ajax-start');
-		var base_url = window.location.protocol + '//' + window.location.host + '/iims-ci-master/';
+		var base_url = window.location.protocol + '//' + window.location.host + '/CAM-InventoryManagementSystem/';
 
 		$.ajax({
 			url: base_url + 'welcome/checkLoginCredintials',

@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller
         parent:: __construct();
 
         $this->Model_Helper->checkSession();
-        $this->template->write('title', 'IIMS -- Welcome to dashboard');
+        $this->template->write('title', 'CAM - Inventory Management System');
     }
 
     public function index()

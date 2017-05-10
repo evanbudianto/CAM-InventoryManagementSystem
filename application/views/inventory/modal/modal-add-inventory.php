@@ -60,6 +60,13 @@
 			        </div>
 			    </div>
 
+			    <!-- <div class="control-group">
+			        <label class="control-label" for="PriceCategory">Price Category</label>
+			        <div class="controls">
+			            <input type="number" name="PriceCategory" class="currency input-medium" />
+			        </div>
+			    </div> -->
+
 			    <div class="control-group">
 			        <label class="control-label" for="Warranty">Warranty</label>
 			        <div class="controls">

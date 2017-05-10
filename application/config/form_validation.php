@@ -161,6 +161,11 @@ $config = array(
 			'rules' => 'trim|required|is_natural_no_zero|xss_clean'
 		),
 		array(
+			'field' => 'PriceCategory',
+			'label' => 'Price Category',
+			'rules' => 'trim|required|is_natural_no_zero|xss_clean'
+		),
+		array(
 			'field' => 'Description',
 			'label' => 'Description',
 			'rules' => 'trim|max_length[300]|xss_clean'
@@ -200,6 +205,11 @@ $config = array(
 		array(
 			'field' => 'UnitPrice',
 			'label' => 'Unit Price',
+			'rules' => 'trim|required|is_natural_no_zero|xss_clean'
+		),
+		array(
+			'field' => 'PriceCategory',
+			'label' => 'Price Category',
 			'rules' => 'trim|required|is_natural_no_zero|xss_clean'
 		),
 		array(
