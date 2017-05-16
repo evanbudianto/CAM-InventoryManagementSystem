@@ -39,6 +39,8 @@ class Model_Invoice extends CI_Model
             $CustomerID = 0;
         }
 
+        $RequestStatus = 'new order';
+
 		$insert = array (
             'InvoiceNumber' =>	$InvoiceNumber,
             'InvoiceType'   =>  $InvoiceType,
@@ -51,7 +53,8 @@ class Model_Invoice extends CI_Model
         	'GrandTotal' 	=>	$this->input->post('GrandTotal'),
             'CreatedBy'     =>	$this->session->userdata('userId'),
             'ModifiedBy'    =>	$this->session->userdata('userId'),
-            'ModifiedDate'  =>  date("d F, Y | g:i a")
+            'ModifiedDate'  =>  date("d F, Y | g:i a"),
+            'RequestStatus' =>  $RequestStatus
         );
 
         if($InvoiceType == 'Regular Request')
@@ -105,7 +108,7 @@ class Model_Invoice extends CI_Model
     	$columns = array(
     		'tbl_invoice.ID', 'InvoiceNumber', 'InvoiceType', 'tbl_invoice.CreatedDate', 'tbl_invoice.CustomerID', 'ServiceCharge',
             'TotalCost', 'TotalDiscount', 'VAT', 'GrandTotal', 'tbl_user.Name AS CreatorName', 'tbl_user.UserName',
-            'tbl_customer.ID AS CustomerID', 'tbl_customer.CustomerName', 'tbl_invoice.CreatedBy', 'tbl_invoice.ModifiedDate'
+            'tbl_customer.ID AS CustomerID', 'tbl_customer.CustomerName', 'tbl_invoice.CreatedBy', 'tbl_invoice.ModifiedDate', 'RequestStatus'
 		);
 
     	$this->db->select($columns);
@@ -128,7 +131,7 @@ class Model_Invoice extends CI_Model
         $columns = array(
             'tbl_invoice.ID', 'InvoiceNumber', 'InvoiceType', 'tbl_invoice.CreatedDate', 'ServiceCharge', 'CustomerNameForCashSale',
             'CustomerMobileForCashSale', 'TotalCost', 'TotalDiscount', 'VAT', 'GrandTotal', 'tbl_user.Name AS CreatorName', 'tbl_user.UserName AS CreatorUserName',
-            'tbl_invoice.CreatedBy', 'tbl_invoice.ModifiedDate'
+            'tbl_invoice.CreatedBy', 'tbl_invoice.ModifiedDate', 'RequestStatus'
         );
 
         $this->db->select($columns);
@@ -147,14 +150,14 @@ class Model_Invoice extends CI_Model
 
     public function getInvoiceDetailsByInvoiceID($invoiceId)
     {
-    	$columns = array('Title', 'Description', 'UnitPrice', 'PriceCategory', 'Warranty', 'Quantity', 'SerialNumber');
+    	$columns = array('Title', 'Description', 'UnitPrice', /*'PriceCategory',*/ 'Warranty', 'Quantity', 'SerialNumber');
     	return $this->Model_DB->read($this->_tableInvoiceDetails, $columns, array('InvoiceID' => $invoiceId));
     }
 
     public function getInvoice($id)
     {
     	$columns = array('tbl_invoice.ID', 'InvoiceNumber', 'InvoiceType', 'CustomerID', 'CustomerNameForCashSale', 'CustomerMobileForCashSale',
-            'tbl_invoice.CreatedDate', 'Name AS CreatorName', 'UserName', 'ServiceCharge', 'TotalCost', 'TotalDiscount', 'VAT', 'GrandTotal'
+            'tbl_invoice.CreatedDate', 'Name AS CreatorName', 'UserName', 'ServiceCharge', 'TotalCost', 'TotalDiscount', 'VAT', 'GrandTotal', 'RequestStatus'
         );
 
     	$this->db->select($columns);
@@ -174,7 +177,7 @@ class Model_Invoice extends CI_Model
     {
     	$columns = array(
             'tbl_invoice.ID', 'InvoiceNumber', 'InvoiceType', 'CustomerID', 'tbl_invoice.CreatedDate', 'tbl_user.Name AS CreatorName',
-            'tbl_user.UserName AS CreatorUserName', 'ServiceCharge', 'TotalCost', 'TotalDiscount', 'VAT', 'GrandTotal', 'tbl_invoice.CreatedBy'
+            'tbl_user.UserName AS CreatorUserName', 'ServiceCharge', 'TotalCost', 'TotalDiscount', 'VAT', 'GrandTotal', 'tbl_invoice.CreatedBy', 'RequestStatus'
         );
 
     	$this->db->select($columns);

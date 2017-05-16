@@ -12,7 +12,7 @@ class Invoice extends CI_Controller
 
         $this->load->helper('date');
         $this->Model_Helper->checkSession();
-        $this->template->write('title', 'IIMS -- Invoice Management');
+        $this->template->write('title', 'CAM - Inventory Management System');
     }
 
     public function index()

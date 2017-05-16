@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2017 at 10:21 AM
+-- Generation Time: May 16, 2017 at 06:56 AM
 -- Server version: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -60,6 +60,7 @@ CREATE TABLE `tbl_inventory` (
   `Quantity` int(11) NOT NULL,
   `Warranty` varchar(30) NOT NULL DEFAULT '0',
   `UnitPrice` varchar(10) NOT NULL,
+  `PriceCategory` varchar(30) NOT NULL,
   `Status` enum('Yes','No') NOT NULL DEFAULT 'Yes',
   `CreatedBy` int(11) NOT NULL,
   `CreatedDate` varchar(30) NOT NULL,
@@ -71,13 +72,24 @@ CREATE TABLE `tbl_inventory` (
 -- Dumping data for table `tbl_inventory`
 --
 
-INSERT INTO `tbl_inventory` (`ID`, `CategoryID`, `Title`, `Description`, `Quantity`, `Warranty`, `UnitPrice`, `Status`, `CreatedBy`, `CreatedDate`, `ModifiedBy`, `ModifiedDate`) VALUES
-(1, 2, 'Kertas HVS A4 60 gsm', 'Merk Sidu', 100, 'No Warranty', '200000', 'Yes', 1, '11 April, 2017', 3, '20 April, 2017 | 10:52 am'),
-(2, 3, 'Flashdisk CBS - 16 GB', '', 62, 'No Warranty', '50000', 'Yes', 4, '18 April, 2017', 3, '27 April, 2017 | 1:18 pm'),
-(3, 4, 'Goodie Bag - medium', '', 78, 'No Warranty', '5000', 'Yes', 4, '18 April, 2017', 3, '18 April, 2017 | 2:01 pm'),
-(4, 1, 'Kardus', 'kardus penyimpanan barang', 17, 'No Warranty', '5000', 'Yes', 3, '20 April, 2017', 3, '21 April, 2017 | 8:57 am'),
-(5, 3, 'Flashdisk Toshiba - 1 GB', '', 20, 'No Warranty', '200000', 'Yes', 3, '20 April, 2017', 3, '20 April, 2017 | 11:13 am'),
-(6, 3, 'Flashdisk 64 GB', 'tes', 76, 'No Warranty', '200000', 'Yes', 3, '21 April, 2017', 3, '27 April, 2017 | 1:18 pm');
+INSERT INTO `tbl_inventory` (`ID`, `CategoryID`, `Title`, `Description`, `Quantity`, `Warranty`, `UnitPrice`, `PriceCategory`, `Status`, `CreatedBy`, `CreatedDate`, `ModifiedBy`, `ModifiedDate`) VALUES
+(1, 2, 'Kertas HVS A4 60 gsm', 'Merk Sidu', 100, 'No Warranty', '200000', 'regular', 'Yes', 1, '11 April, 2017', 3, '20 April, 2017 | 10:52 am'),
+(2, 3, 'Flashdisk CBS - 16 GB', '', 62, 'No Warranty', '50000', 'regular', 'Yes', 4, '18 April, 2017', 3, '27 April, 2017 | 1:18 pm'),
+(3, 4, 'Goodie Bag - medium', '', 78, 'No Warranty', '50000', 'regular', 'Yes', 4, '18 April, 2017', 3, '18 April, 2017 | 2:01 pm'),
+(4, 1, 'Kardus', 'kardus penyimpanan barang', 17, 'No Warranty', '5000', '1', 'Yes', 3, '20 April, 2017', 3, '21 April, 2017 | 8:57 am'),
+(5, 3, 'Flashdisk Toshiba - 1 GB', '', 20, 'No Warranty', '200000', '0', 'Yes', 3, '20 April, 2017', 3, '20 April, 2017 | 11:13 am'),
+(6, 3, 'Flashdisk 64 GB', 'tes', 76, 'No Warranty', '200000', '0', 'Yes', 3, '21 April, 2017', 3, '27 April, 2017 | 1:18 pm'),
+(7, 5, 'TV LG 32"', 'TV LG version 43,2345,32', 5, 'No Warranty', '5000000', 'silver', 'Yes', 3, '03 May, 2017', 3, '03 May, 2017 | 10:05 am'),
+(8, 5, 'TV Sony 20"', 'TV Sony version 23.1221', 6, 'No Warranty', '3000000', 'silver', 'Yes', 3, '03 May, 2017', 3, '03 May, 2017 | 10:12 am'),
+(9, 4, 'Goodie Bag CAM Awards 2017 Men', '', 23, 'No Warranty', '10000', '0', 'Yes', 3, '03 May, 2017', 3, '03 May, 2017 | 10:29 am'),
+(10, 4, 'Goodie Bag CAM Awards 2017 Women', '', 21, 'No Warranty', '25000', '0', 'Yes', 3, '03 May, 2017', 3, '03 May, 2017 | 10:45 am'),
+(11, 4, 'Goodie Bag CBS', '', 23, 'No Warranty', '10000', '0', 'Yes', 3, '03 May, 2017', 3, '03 May, 2017 | 10:46 am'),
+(12, 2, 'Pensil CBS', '', 13, 'No Warranty', '10000', '0', 'Yes', 3, '03 May, 2017', 3, '03 May, 2017 | 10:47 am'),
+(13, 2, 'Amplop Kecil Telkomsel', '', 200, 'No Warranty', '50', '1', 'Yes', 3, '03 May, 2017', 3, '03 May, 2017 | 10:53 am'),
+(14, 1, 'Tes', '12345', 12, 'No Warranty', '12000', '0', 'Yes', 3, '04 May, 2017', 3, '04 May, 2017 | 8:05 am'),
+(15, 2, 'Map Batik', '', 120, 'No Warranty', '1000', '0', 'Yes', 3, '05 May, 2017', 3, '05 May, 2017 | 3:06 pm'),
+(18, 1, 'Klambi', 'asdfasf', 12, 'No Warranty', '6000000', 'gold', 'Yes', 3, '10 May, 2017', 3, '10 May, 2017 | 10:27 am'),
+(19, 1, 'katok', 'safaf', 23, 'No Warranty', '500000', 'brown', 'Yes', 3, '10 May, 2017', 3, '10 May, 2017 | 10:51 am');
 
 -- --------------------------------------------------------
 
@@ -104,7 +116,8 @@ INSERT INTO `tbl_inventory_category` (`ID`, `CategoryName`, `CategoryKey`, `Desc
 (1, 'Uncategorized', 'uncategorized', '<p>This is the default category</p>', 1, '', 1, '2013-03-16 15:27:36'),
 (2, 'ATK', 'atk', 'Alat Tulis Kantor: kertas, pensil, pulpen, buku, agenda, lem, dsb.', 1, '11 April, 2017', 1, '11 April, 2017 | 10:13 am'),
 (3, 'Flashdisk', 'flashdisk', 'Flasdisk dan media penyimpanan portabel lainnya', 4, '18 April, 2017', 4, '18 April, 2017 | 9:10 am'),
-(4, 'Goodie Bag', 'goodie-bag', '', 4, '18 April, 2017', 4, '18 April, 2017 | 9:15 am');
+(4, 'Goodie Bag', 'goodie-bag', '', 4, '18 April, 2017', 4, '18 April, 2017 | 9:15 am'),
+(5, 'TV', 'tv', '', 3, '03 May, 2017', 3, '03 May, 2017 | 10:04 am');
 
 -- --------------------------------------------------------
 
@@ -127,24 +140,27 @@ CREATE TABLE `tbl_invoice` (
   `GrandTotal` decimal(10,0) NOT NULL,
   `CreatedBy` int(11) NOT NULL,
   `ModifiedBy` int(11) NOT NULL,
-  `ModifiedDate` varchar(30) NOT NULL
+  `ModifiedDate` varchar(30) NOT NULL,
+  `RequestStatus` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_invoice`
 --
 
-INSERT INTO `tbl_invoice` (`ID`, `InvoiceNumber`, `InvoiceType`, `CustomerID`, `CustomerNameForCashSale`, `CustomerMobileForCashSale`, `CreatedDate`, `ServiceCharge`, `TotalCost`, `TotalDiscount`, `VAT`, `GrandTotal`, `CreatedBy`, `ModifiedBy`, `ModifiedDate`) VALUES
-(3, 'INV-09065', 'Regular Request', 3, '', '0', '17 April, 2017', '', '200000', '', '', '200000', 3, 3, '17 April, 2017 | 3:17 pm'),
-(4, 'INV-95101', 'Regular Request', 3, '', '0', '18 April, 2017', '', '550000', '', '', '550000', 4, 4, '18 April, 2017 | 9:16 am'),
-(5, 'REQ-170444736', 'Regular Request', 3, '', '0', '18 April, 2017', '', '50000', '', '', '50000', 3, 3, '18 April, 2017 | 1:36 pm'),
-(12, 'REQ-1704-1', 'Regular Request', 3, '', '0', '18 April, 2017', '', '5000', '', '', '5000', 3, 3, '18 April, 2017 | 2:01 pm'),
-(13, 'REQ-1704-2', 'Regular Request', 3, '', '0', '18 April, 2017', '', '200000', '', '', '200000', 3, 3, '18 April, 2017 | 2:09 pm'),
-(14, 'REQ-1704-3', 'Regular Request', 3, '', '0', '18 April, 2017', '', '50000', '', '', '50000', 3, 3, '18 April, 2017 | 2:13 pm'),
-(15, 'REQ-1704-4', 'Regular Request', 3, '', '0', '18 April, 2017', '0', '4250000', '0', '0', '4250000', 3, 3, '18 April, 2017 | 3:08 pm'),
-(16, 'REQ-1704-5', 'Regular Request', 3, '', '0', '01 May, 2017', '0', '5000', '0', '0', '5000', 3, 3, '21 April, 2017 | 8:57 am'),
-(17, 'REQ-1704-6', 'Regular Request', 3, '', '0', '21 April, 2017', '0', '4000000', '0', '0', '4000000', 3, 3, '21 April, 2017 | 9:10 am'),
-(18, 'REQ-1704-7', 'Regular Request', 3, '', '0', '27 April, 2017', '0', '1100000', '0', '0', '1100000', 3, 3, '27 April, 2017 | 1:18 pm');
+INSERT INTO `tbl_invoice` (`ID`, `InvoiceNumber`, `InvoiceType`, `CustomerID`, `CustomerNameForCashSale`, `CustomerMobileForCashSale`, `CreatedDate`, `ServiceCharge`, `TotalCost`, `TotalDiscount`, `VAT`, `GrandTotal`, `CreatedBy`, `ModifiedBy`, `ModifiedDate`, `RequestStatus`) VALUES
+(3, 'INV-09065', 'Regular Request', 3, '', '0', '17 April, 2017', '', '200000', '', '', '200000', 3, 3, '17 April, 2017 | 3:17 pm', ''),
+(4, 'INV-95101', 'Regular Request', 3, '', '0', '18 April, 2017', '', '550000', '', '', '550000', 4, 4, '18 April, 2017 | 9:16 am', ''),
+(5, 'REQ-170444736', 'Regular Request', 3, '', '0', '18 April, 2017', '', '50000', '', '', '50000', 3, 3, '18 April, 2017 | 1:36 pm', ''),
+(12, 'REQ-1704-1', 'Regular Request', 3, '', '0', '18 April, 2017', '', '5000', '', '', '5000', 3, 3, '18 April, 2017 | 2:01 pm', ''),
+(13, 'REQ-1704-2', 'Regular Request', 3, '', '0', '18 April, 2017', '', '200000', '', '', '200000', 3, 3, '18 April, 2017 | 2:09 pm', ''),
+(14, 'REQ-1704-3', 'Regular Request', 3, '', '0', '18 April, 2017', '', '50000', '', '', '50000', 3, 3, '18 April, 2017 | 2:13 pm', ''),
+(15, 'REQ-1704-4', 'Regular Request', 3, '', '0', '18 April, 2017', '0', '4250000', '0', '0', '4250000', 3, 3, '18 April, 2017 | 3:08 pm', ''),
+(16, 'REQ-1704-5', 'Regular Request', 3, '', '0', '01 May, 2017', '0', '5000', '0', '0', '5000', 3, 3, '21 April, 2017 | 8:57 am', ''),
+(17, 'REQ-1704-6', 'Regular Request', 3, '', '0', '21 April, 2017', '0', '4000000', '0', '0', '4000000', 3, 3, '21 April, 2017 | 9:10 am', ''),
+(18, 'REQ-1704-7', 'Regular Request', 3, '', '0', '27 April, 2017', '0', '1100000', '0', '0', '1100000', 3, 3, '27 April, 2017 | 1:18 pm', 'ordered'),
+(19, 'REQ-1705-1', 'Regular Request', 3, '', '0', '10 May, 2017', '0', '500000', '0', '0', '500000', 3, 3, '10 May, 2017 | 4:22 pm', 'ordered'),
+(20, 'REQ-1705-2', 'Regular Request', 3, '', '0', '10 May, 2017', '0', '6000000', '0', '0', '6000000', 3, 3, '10 May, 2017 | 4:23 pm', 'new order');
 
 -- --------------------------------------------------------
 
@@ -332,17 +348,17 @@ ALTER TABLE `tbl_customer`
 -- AUTO_INCREMENT for table `tbl_inventory`
 --
 ALTER TABLE `tbl_inventory`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `tbl_inventory_category`
 --
 ALTER TABLE `tbl_inventory_category`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tbl_invoice`
 --
 ALTER TABLE `tbl_invoice`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `tbl_invoice_details`
 --

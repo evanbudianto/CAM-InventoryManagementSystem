@@ -49,28 +49,28 @@ class Model_Inventory extends CI_Model
         $Quantity = $this->input->post('Quantity');
         $UnitPrice = $this->input->post('UnitPrice');
 
-        echo "Hello World";
+        // echo "Hello World";
 
-        $PriceCategory = 0;
+        $PriceCategory = '';
         if (($UnitPrice >= 1) && ($UnitPrice <= 499999))
         {
-            $PriceCategory = 1;
+            $PriceCategory = 'regular';
         }
         elseif (($UnitPrice >= 500000) && ($UnitPrice <= 2599999))
         {
-            $PriceCategory = 2;
+            $PriceCategory = 'brown';
         }
         elseif (($UnitPrice >= 2600000) && ($UnitPrice <= 5999999))
         {
-            $PriceCategory = 3;
+            $PriceCategory = 'silver';
         }
         elseif (($UnitPrice >= 6000000) && ($UnitPrice <= 12599999))
         {
-            $PriceCategory = 4;
+            $PriceCategory = 'gold';
         }
         elseif ($UnitPrice >= 12600000)
         {
-            $PriceCategory = 5;
+            $PriceCategory = 'platinum';
         }
 
 
@@ -81,6 +81,7 @@ class Model_Inventory extends CI_Model
     		'Quantity'      	=> $this->input->post('Quantity'),
     		'Warranty'    		=> $warranty,
     		'UnitPrice'     	=> $this->input->post('UnitPrice'),
+            'PriceCategory'     => $this->input->post('PriceCategory'),
             'PriceCategory'     => $PriceCategory,
     		'Status'   			=> ($Quantity > 0) ? 'Yes' : 'No',
     		'CreatedBy'     	=> $this->session->userdata('userId'),
@@ -96,26 +97,26 @@ class Model_Inventory extends CI_Model
     {
         $UnitPrice = $this->input->post('UnitPrice');
 
-        $PriceCategory = 0;
+        $PriceCategory = '';
         if (($UnitPrice >= 1) && ($UnitPrice <= 499999))
         {
-            $PriceCategory = 1;
+            $PriceCategory = 'regular';
         }
         elseif (($UnitPrice >= 500000) && ($UnitPrice <= 2599999))
         {
-            $PriceCategory = 2;
+            $PriceCategory = 'brown';
         }
         elseif (($UnitPrice >= 2600000) && ($UnitPrice <= 5999999))
         {
-            $PriceCategory = 3;
+            $PriceCategory = 'silver';
         }
         elseif (($UnitPrice >= 6000000) && ($UnitPrice <= 12599999))
         {
-            $PriceCategory = 4;
+            $PriceCategory = 'gold';
         }
         elseif ($UnitPrice >= 12600000)
         {
-            $PriceCategory = 5;
+            $PriceCategory = 'platinum';
         }
 
     	$data = array (

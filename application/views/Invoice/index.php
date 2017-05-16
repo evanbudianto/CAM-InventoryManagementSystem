@@ -14,7 +14,8 @@
 				<tr>
 	          		<th>Date</th>
 	          		<th>Request Number</th>
-	          		<th>Request Type</th>
+	          		<!-- <th>Request Type</th> -->
+	          		<th>Request Status</th>
 	          		<th>Requester</th>
 	          		<th>Transaction Details</th>
 	          		<th>Created By</th>
@@ -40,7 +41,8 @@
 	<tr>
 		<td>{{CreatedDate}}</td>
 		<td>{{InvoiceNumber}}</td>
-		<td>{{InvoiceType}}</td>
+		<!-- <td>{{InvoiceType}}</td> -->
+		<td>{{RequestStatus}}</td>
   		<td><a href="<?=site_url('customer/profile')?>/{{CustomerID}}">{{CustomerName}}</a></td>
   		<td>
   			<!-- <p>Total Cost: Rp {{TotalCost}}</p>

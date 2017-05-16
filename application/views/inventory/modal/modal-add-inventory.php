@@ -60,12 +60,12 @@
 			        </div>
 			    </div>
 
-			    <!-- <div class="control-group">
+			    <div class="control-group">
 			        <label class="control-label" for="PriceCategory">Price Category</label>
 			        <div class="controls">
 			            <input type="number" name="PriceCategory" class="currency input-medium" />
 			        </div>
-			    </div> -->
+			    </div>
 
 			    <div class="control-group">
 			        <label class="control-label" for="Warranty">Warranty</label>
@@ -137,7 +137,7 @@
 	function warrantyListGenerator(warrantyType) {
 		var length = 0, numbers  = [];
 		if(warrantyType === 'year') length = 10;
-		else if(warrantyType === 'month') length = 11;
+		else if(warrantyType === 'month') length = 12;
 		for(var i = 1; i <= length; i++) {
 			numbers.push({Index: i});
 		}
